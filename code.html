@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recovery Code</title>
+<style>
+body{background:#050707;color:#00ff41;font-family:Consolas,monospace;text-align:center;padding:12vh 10px}
+.box{background:#c0c0c0;color:black;border:4px outset white;padding:25px;max-width:500px;margin:auto}
+.bar{background:navy;color:white;padding:10px}
+.code{font-size:45px;color:#00a000;font-weight:bold;letter-spacing:8px;margin:30px 0}
+button{padding:13px 20px;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="box">
+<div class="bar">WINDOWS RECOVERY CENTER</div>
+<h2>RECOVERY CODE GENERATED</h2>
+<p>Your fictional recovery code is:</p>
+<div class="code" id="code">------</div>
+<button onclick="copyCode()">COPY CODE</button>
+<br><br>
+<button onclick="location.href='index.html'">RETURN TO SYSTEM</button>
+<p id="msg"></p>
+</div>
+<script>
+const code=String(Math.floor(100000+Math.random()*900000));
+localStorage.setItem("recoveryCode",code);
+document.getElementById("code").textContent=code;
+function copyCode(){
+ navigator.clipboard?.writeText(code);
+ document.getElementById("msg").textContent="CODE COPIED";
+}
+</script>
+</body>
+</html>
